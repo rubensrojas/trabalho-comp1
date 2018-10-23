@@ -60,11 +60,11 @@ void tabuleiro(char tab[][N], int num){
 		//chamando função da barra de '=', para terminar o tabuleiro.
 	printf("  i "); 	//Espaços para deixar mais esteticamente bonito.
 	linha(num);
-
-		
+	puts(""); 			//pulando linha
 }
 
 //##################################################################################################
+
 /*
 Descrição: Checa se a jogada é regular
 Entrada:   Tabuleiro, tamanho do tabuleiro, e indices jogados
@@ -85,7 +85,7 @@ int checa_jogada(char tab[][N],int num, int i, int j){
 		}
 		//checa se essa posição está "vazia".
 	if(tab[i][j] == ' '){
-		puts("Boa jogada!");
+		printf("Boa jogada!\n\n"); //pulando duas linhas por estetica.
 		return 1;	//1 = Jogada Aprovada!
 	} else if(tab[i][j] == 'X') {
 		printf("O 'X' já ocupa a posição! ");
@@ -96,15 +96,17 @@ int checa_jogada(char tab[][N],int num, int i, int j){
 	}
 	return 0;
 }
+
 //##################################################################################################
 
 /*
-Descrição: Checa de acordo com o tabuleiro, se algum dos jogadores ganhou.
+Descrição: Função principal para checar de acordo com o tabuleiro, se algum dos jogadores ganhou.
 Entrada:   Tabuleiro, e tamanho do tabuleiro
 Saida:	   retorna 1 caso haja algum vencedor, ou 0, caso o contrário.
 */
 
 int checa_vitoria(char tab[][N], int num){
+	//dicionario de dados
 	int i,j; 		//indices para matriz
 	int checa_x; 	//variavel para checar se o X ganhou
 	int checa_o;	//variavel para checar se o O ganhou
@@ -116,13 +118,15 @@ int checa_vitoria(char tab[][N], int num){
 		checa_o = 0; //idem
 		for(j = 0; j < num; j++){
 			if(tab[i][j] == 'X'){
-				checa_x++;
-				if(checa_x == num){
+				checa_x++;    //Aumenta caso o espeço esteja preenchido
+				if(checa_x == num){ //Caso todos os espaços estejam preenchidos
+					printf("Vitoria na Linha[%d]!\n", i);
 					return 1; //vitoria
 				}
-			} else if(tab [i][j] == 'O'){
-				checa_o++;
-				if(checa_o == num){
+			} else if(tab[i][j] == 'O'){
+				checa_o++;    //Aumenta caso o espeço esteja preenchido
+				if(checa_o == num){ //Caso todos os espaços estejam preenchidos
+					printf("Vitoria na Linha[%d]!\n", i);
 					return 1; //vitoria
 				}
 			}
@@ -135,13 +139,15 @@ int checa_vitoria(char tab[][N], int num){
 		checa_o = 0; //idem
 		for(i = 0; i < num; i++){
 			if(tab[i][j] == 'X'){
-				checa_x++;
-				if(checa_x == num){
+				checa_x++;    //Aumenta caso o espeço esteja preenchido
+				if(checa_x == num){ //Caso todos os espaços estejam preenchidos
+					printf("Vitoria na Coluna[%d]!\n", j);
 					return 1; //vitoria
 				}
-			} else if(tab [i][j] == 'O'){
-				checa_o++;
-				if(checa_o == num){
+			} else if(tab[i][j] == 'O'){
+				checa_o++;    //Aumenta caso o espeço esteja preenchido
+				if(checa_o == num){ //Caso todos os espaços estejam preenchidos
+					printf("Vitoria na Coluna[%d]!\n", j);
 					return 1; //vitoria
 				}
 			}
@@ -152,13 +158,15 @@ int checa_vitoria(char tab[][N], int num){
 	checa_o = 0; //idem
 	for(i = 0; i < num; i++){
 		if(tab[i][i] == 'X'){
-			checa_x++;
-			if(checa_x == num){
+			checa_x++;    //Aumenta caso o espeço esteja preenchido
+			if(checa_x == num){ //Caso todos os espaços estejam preenchidos
+				puts("Vitoria na Diagonal");
 				return 1; //vitoria
 			}
-		} else if(tab [i][j] == 'O'){
-			checa_o++;
-			if(checa_o == num){
+		} else if(tab[i][j] == 'O'){
+			checa_o++;    //Aumenta caso o espeço esteja preenchido
+			if(checa_o == num){ //Caso todos os espaços estejam preenchidos
+				puts("Vitoria na Diagonal");
 				return 1; //vitoria
 			}
 		}
@@ -169,69 +177,144 @@ int checa_vitoria(char tab[][N], int num){
 	checa_o = 0; //idem
 	for(i = 0; i < num; i++){
 		if(tab[i][j] == 'X'){
-			checa_x++;
-			if(checa_x == num){
+			checa_x++;    //Aumenta caso o espeço esteja preenchido
+			if(checa_x == num){ //Caso todos os espaços estejam preenchidos
+				puts("Vitoria na Diagonal");
 				return 1; //vitoria
 			}
-		} else if(tab [i][j] == 'O'){
-			checa_o++;
-			if(checa_o == num){
+		} else if(tab[i][j] == 'O'){
+			checa_o++;    //Aumenta caso o espeço esteja preenchido
+			if(checa_o == num){ //Caso todos os espaços estejam preenchidos
+				puts("Vitoria na Diagonal");
 				return 1; //vitoria
 			}
 		}
 		j--;
 	}
+	//chamando outras checagens
+		//checagem da diagonal curva
+		if(checa_vitoria_curva(tab,num) == 1){
+			puts("Vitoria na Diagonal curva");
+			return 1; //vitoria
+		}
 
+		//checagem da diagonais menores que convergem para o meio.
+		if(num % 2 != 0){ //essa checagem só vale para tabuleiros de tamanho ímpar, pois possuem uma posição central.
+			if(checa_vitoria_meio(tab, num) == 1){
+				puts("Vitoria na Diagonal curta convergindo para o meio!");
+				return 1; //vitoria
+				}
+			}
+	return 0; //Sem vitoria
+}
+
+//##################################################################################################
+
+/*
+Descrição: Modularidade da função principal de checagem de vitoria, para as checagens das diagonais curvas.
+Entrada:   Tabuleiro, e o tamanho do tabuleiro.
+Saída: 	   Retorna 0 por padrão ou 1 caso alguém vença.
+*/
+
+int checa_vitoria_curva(char tab[][N], int num){
+	//dicionario de dados
+	int i,j; 		//indices para matriz
+	int checa_x; 	//variavel para checar se o X ganhou
+	int checa_o;	//variavel para checar se o O ganhou
+	//corpo:
 	//checa diagonal curva superior
 	j = 1;
 	checa_x = 0; //Sempre zerando os checa, para não acumular as checagens.
 	checa_o = 0; //idem
 	for(i = 0; i < num; i++){
 		if(tab[i][j] == 'X'){
-			checa_x++;
-			if(checa_x == num){
+			checa_x++;    //Aumenta caso o espeço esteja preenchido
+			if(checa_x == num){ //Caso todos os espaços estejam preenchidos
 				return 1; //vitoria
 			}
-		} else if(tab [i][j] == 'O'){
-			checa_o++;
-			if(checa_o == num){
+		} else if(tab[i][j] == 'O'){
+			checa_o++;    //Aumenta caso o espeço esteja preenchido
+			if(checa_o == num){ //Caso todos os espaços estejam preenchidos
 				return 1; //vitoria
 			}
 		}
-		if(j != num-1){
+		if(j != num-1){ //j cresce até o ultimo indice do tabuleiro, depois decresce.
 			j++;
 		} else {
 			j--;
 		}
 	}
-	//checa diagonais menores que convergem para o meio
-	if(num % 2 != 0){
-		i = ((num-1)/2);
-		for(j = 0; j < num;  j++){
-			if(tab[i][j] == 'X'){
-				checa_x++;
-				if(checa_x == num){
-					return 1; //vitoria
-				}
-			} else if(tab [i][j] == 'O'){
-				checa_o++;
-				if(checa_o == num){
-					return 1; //vitoria
-				}
-			}
-			if(j <= ((num-1)/2)){
-				i++;
-			} else {
-				i--;
-			}
-		}
-	}
-	return 0; //Sem vitoria	
+
+	return 0; //sem vitoria
 }
+
 //##################################################################################################
 
 /*
-Descrição: Recebe as jogadas dos jogadores.
+Descrição: Modularidade da função principal de checagem de vitoria, para as checagens das diagonais menores que convergem para o meio.
+Entrada:   Tabuleiro, e o tamanho do tabuleiro.
+Saída: 	   Retorna 0 por padrão ou 1 caso alguém vença.
+*/
+
+int checa_vitoria_meio(char tab[][N], int num){
+	//Dicionario de dados
+	int i,j; 		//indices para matriz
+	int checa_x; 	//variavel para checar se o X ganhou
+	int checa_o;	//variavel para checar se o O ganhou
+	//corpo:
+	//checa diagonais menores que convergem para o meio inferior
+	i = ((num-1)/2); //i = metade do tabuleiro.
+	checa_x = 0; //Sempre zerando os checa, para não acumular as checagens.
+	checa_o = 0; //idem
+	for(j = 0; j < num;  j++){
+		if(tab[i][j] == 'X'){
+			checa_x++;    //Aumenta caso o espeço esteja preenchido
+			if(checa_x == num){ //Caso todos os espaços estejam preenchidos
+				return 1; //vitoria
+			}
+		} else if(tab[i][j] == 'O'){
+			checa_o++;    //Aumenta caso o espeço esteja preenchido
+			if(checa_o == num){ //Caso todos os espaços estejam preenchidos
+				return 1; //vitoria
+			}
+		}
+		if(j < ((num-1)/2)){ //i cresce até a metade do tabuleiro, depois decresce.
+			i++;
+		} else {
+			i--;
+		}
+	}
+
+	//checa diagonais menores que convergem para o meio superior
+	i = ((num-1)/2); //i = metade do tabuleiro.
+	checa_x = 0; //Sempre zerando os checa, para não acumular as checagens.
+	checa_o = 0; //idem
+	for(j = 0; j < num;  j++){
+		if(tab[i][j] == 'X'){
+			checa_x++;    //Aumenta caso o espeço esteja preenchido
+			if(checa_x == num){ //Caso todos os espaços estejam preenchidos
+				return 1; //vitoria
+			}
+		} else if(tab[i][j] == 'O'){
+			checa_o++;    //Aumenta caso o espeço esteja preenchido
+			if(checa_o == num){ //Caso todos os espaços estejam preenchidos
+				return 1; //vitoria
+			}
+		}
+		if(j < ((num-1)/2)){ //i cresce até a metade do tabuleiro, depois decresce.
+			i++;
+		} else {
+			i--;
+		}
+	}
+
+	return 0; //Sem vitoria	
+}
+
+//##################################################################################################
+
+/*
+Descrição: Função para organizar a chamada da(s): jogadas, checagens de vitoria e impressão do tabuleiro.
 Entrada:   recebe o tabuleiro.
 Saída:     retorna caso alguém vença.
 */
@@ -251,7 +334,7 @@ int org_jogadas(char tab[][N], int num){
 	//Imprimindo o tabuleiro
 	tabuleiro(tab, num);
 	//recebendo jogadas
-	for(jogadas = 0;jogadas <= (num * num);){
+	for(jogadas = 0;jogadas < (num * num);){
 		//recebendo a jogada do jogador X
 		do{
 			checa = 0; 	//Começa como falso naturalmente.
@@ -271,42 +354,51 @@ int org_jogadas(char tab[][N], int num){
 		//Imprimindo o tabuleiro
 		tabuleiro(tab, num);
 
-		if(checa_vitoria(tab,num) == 1){
-			puts("Jogador X Ganhou!");
-			return 0;
-		}
-		if(jogadores == 2){
-		//recebendo a jogada do jogador O
-		do{
-			checa = 0; 	//Começa como falso naturalmente.
-			printf("Jogador O, em que indice(i, j) deseja jogar? ");
-			scanf("%d %d", &i, &j);
-			//checando se a posição está disponivel.
-			if(checa_jogada(tab,num,i,j) == 1){
-				tab[i][j] = 'O';
-				checa = 1;
-				jogadas++;
-			} else {
-				puts("Jogue novamente.");
-				} 
-		} while(checa != 1);
-		
-		//Imprimindo o tabuleiro
-		tabuleiro(tab, num);
-
-		if(checa_vitoria(tab,num) == 1){
-			puts("Jogador O Ganhou!");
-			return 0;
+		if(jogadas >= (num*2) - 1){ //número minimo de jogadas para que alguém possa ganhar
+			if(checa_vitoria(tab,num) == 1){
+				puts("Jogador X Ganhou!");
+				return 0;
+				}
 			}
-		}
-	}
+		if(jogadores == 2){
+			//recebendo a jogada do jogador O
+			do{
+				checa = 0; 	//Começa como falso naturalmente.
+				printf("Jogador O, em que indice(i, j) deseja jogar? ");
+				scanf("%d %d", &i, &j);
+				//checando se a posição está disponivel.
+				if(checa_jogada(tab,num,i,j) == 1){
+					tab[i][j] = 'O';
+					checa = 1;
+					jogadas++;
+				} else {
+					puts("Jogue novamente.");
+					} 
+			} while(checa != 1);
+			
+			//Imprimindo o tabuleiro
+			tabuleiro(tab, num);
+
+			if(jogadas >= (num*2) - 1){ //número minimo de jogadas para que alguém possa ganhar
+				if(checa_vitoria(tab,num) == 1){
+					puts("Jogador X Ganhou!");
+					return 0;
+					}
+				}
+			}
+		} //fim do for de jogadas.
+	
+	//Se passar pelo for, então ninguém ganhou.
+	puts("Deu Velha! Nenhum dos jogadores ganhou!");
 	return 0;
 }
 
-//##################j) deseja j############################################################################
+//##################################################################################################
 
 /*
-Descrição: Função main, apenas para chamar todas as funções necessárias.
+Descrição: Jogo da Velha extendido, com tamanho minimo de 4x4, e maximo de 9x9. Organiza o inicio de todo o jogo.
+Entrada:   Tamanho do tabuleiro.
+Saida: 	   O jogo em sí.
 */
 
 int main(void){
@@ -314,25 +406,30 @@ int main(void){
 	char tab[10][10];	//Matriz do tabuleiro.
 	int num;	 	 	//Número do tamanho do tabuleiro.
 	int i,j;			//Indices para varrer a matriz.
-	
+	int novamente;		//Checagem para jogar novamente.
 	//corpo:
+	do{
 		//Recebendo o tamanho do tabuleiro.
-	do {
-		printf("Jogador, qual o Tamanho do Tabuleiro desejado?(Sendo 3 < n < 10) ");
-		scanf("%d", &num);
-		if(num <= 3 || num >= 10)
-			puts("Tamanho do Tabuleiro inválido!");
-		puts(""); 			//pulando linha.
-		} while(num <= 3 || num >= 10);
+		do {
+			printf("Jogador, qual o Tamanho do Tabuleiro desejado?(Sendo 3 < n < 10) ");
+			scanf("%d", &num);
+			if(num <= 3 || num >= 10)
+				puts("Tamanho do Tabuleiro inválido!");
+			} while(num <= 3 || num >= 10);
 
-		//Deixando a matriz preenchida com espaços.
-	for(i = 0; i < num; i++)
-		for(j = 0; j < num; j++)
-			tab[i][j] = ' ';
+			//Deixando a matriz preenchida com espaços.
+		for(i = 0; i < num; i++)
+			for(j = 0; j < num; j++)
+				tab[i][j] = ' ';
+
+		//Chamando a função desencadeando o inicio do jogo.
+		org_jogadas(tab,num);
+
+		//Verificando se o jogador que jogar novamente.
+		puts("Deseja jogar novamente?(sim = 1; não = 0)");
+		scanf("%d", &novamente);
+		} while(novamente == 1);
 	
-		//Chamando a função que desencadeia o inicio do jogo.
-	org_jogadas(tab,num);
-
 	return 0;
 }
 
