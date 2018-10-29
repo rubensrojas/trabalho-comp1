@@ -528,11 +528,11 @@ int org_jogadas(char tab[][N], int num){
 		//Imprimindo o tabuleiro
 		tabuleiro(tab, num);
 
-		//if(jogadas >= (num*2) - 1){ //número minimo de jogadas para que alguém possa ganhar
+		if(jogadas >= (num*2) - 1){ //número minimo de jogadas para que alguém possa ganhar
 			if(checa_vitoria(tab,num) == 1){
 				puts("Jogador X Ganhou!");
 				return 0;
-				//}
+				}
 			}
 		if(jogadores == 2){
 			//recebendo a jogada do jogador O
@@ -559,7 +559,7 @@ int org_jogadas(char tab[][N], int num){
 					return 0;
 					}
 				}
-			} /*else { //jogada do Computador
+			} else { //jogada do Computador
 				do{
 					checa = 0; 	//Começa como falso naturalmente.
 					i = gera_numero(num,1);
@@ -581,7 +581,7 @@ int org_jogadas(char tab[][N], int num){
 						return 0;
 						}
 					}
-				}*/
+				}
 		} //fim do for de jogadas.
 	
 	//Se passar pelo for, então ninguém ganhou.
