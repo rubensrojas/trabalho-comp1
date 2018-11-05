@@ -638,7 +638,7 @@ int org_jogadas(char tab[][N], int num){
 						jogadas++;
 						}
 				} while(checa != 1);
-				printf("Jogada do Computador na [%d][%d]\n", i,j);
+				printf("Jogada do Computador na [%d][%d]\n", j,i);
 				//Imprimindo o tabuleiro
 				tabuleiro(tab, num);
 
