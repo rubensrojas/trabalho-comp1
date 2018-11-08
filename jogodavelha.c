@@ -125,7 +125,9 @@ int checa_vitoria_curva(char tab[][N], int num){
 	checa_x = 0; //Sempre zerando os checa, para não acumular as checagens.
 	checa_o = 0; //idem
 	for(i = 0; i < num; i++){
-		if(tab[i][j] == 'X'){
+		if(tab[i][j] == ' '){ //Caso tenha algum espaço em branco, logo não é possível vencer.
+			break; //Saindo desse caso de vitoria
+		} else if(tab[i][j] == 'X'){
 			checa_x++;    //Aumenta caso o espeço esteja preenchido
 			if(checa_x == num){ //Caso todos os espaços estejam preenchidos
 				return 1; //vitoria
@@ -148,7 +150,9 @@ int checa_vitoria_curva(char tab[][N], int num){
 	checa_x = 0; //Sempre zerando os checa, para não acumular as checagens.
 	checa_o = 0; //idem
 	for(j = 0; j < num; j++){
-		if(tab[i][j] == 'X'){
+		if(tab[i][j] == ' '){ //Caso tenha algum espaço em branco, logo não é possível vencer.
+			break; //Saindo desse caso de vitoria
+		} else if(tab[i][j] == 'X'){
 			checa_x++;    //Aumenta caso o espeço esteja preenchido
 			if(checa_x == num){ //Caso todos os espaços estejam preenchidos
 				return 1; //vitoria
@@ -171,15 +175,17 @@ int checa_vitoria_curva(char tab[][N], int num){
 	checa_x = 0; //Sempre zerando os checa, para não acumular as checagens.
 	checa_o = 0; //idem.
 	for(i = 0; i < num; i++){
-		if(tab[i][j] == 'X'){
-			checa_x++;    //Aumenta caso o espaço esteja preenchido.
-			if(checa_x == num){ //Caso todos os espaços estejam preenchidos.
-				return 1; //vitoria.
+		if(tab[i][j] == ' '){ //Caso tenha algum espaço em branco, logo não é possível vencer.
+			break; //Saindo desse caso de vitoria
+		} else if(tab[i][j] == 'X'){
+			checa_x++;    //Aumenta caso o espeço esteja preenchido
+			if(checa_x == num){ //Caso todos os espaços estejam preenchidos
+				return 1; //vitoria
 			}
 		} else if(tab[i][j] == 'O'){
-			checa_o++;    //Aumenta caso o espaço esteja preenchido.
-			if(checa_o == num){ //Caso todos os espaços estejam preenchidos.
-				return 1; //vitoria.
+			checa_o++;    //Aumenta caso o espeço esteja preenchido
+			if(checa_o == num){ //Caso todos os espaços estejam preenchidos
+				return 1; //vitoria
 			}
 		}
 		if(j != 0){ //j decresce até o ultimo indice do tabuleiro, depois cresce.
@@ -194,15 +200,17 @@ int checa_vitoria_curva(char tab[][N], int num){
 	checa_x = 0; //Sempre zerando os checa, para não acumular as checagens.
 	checa_o = 0; //idem.
 	for(j = 0; j < num; j++){
-		if(tab[i][j] == 'X'){
-			checa_x++;    //Aumenta caso o espaço esteja preenchido.
-			if(checa_x == num){ //Caso todos os espaços estejam preenchidos.
-				return 1; //vitoria.
+		if(tab[i][j] == ' '){ //Caso tenha algum espaço em branco, logo não é possível vencer.
+			break; //Saindo desse caso de vitoria
+		} else if(tab[i][j] == 'X'){
+			checa_x++;    //Aumenta caso o espeço esteja preenchido
+			if(checa_x == num){ //Caso todos os espaços estejam preenchidos
+				return 1; //vitoria
 			}
 		} else if(tab[i][j] == 'O'){
-			checa_o++;    //Aumenta caso o espaço esteja preenchido.
-			if(checa_o == num){ //Caso todos os espaços estejam preenchidos.
-				return 1; //vitoria.
+			checa_o++;    //Aumenta caso o espeço esteja preenchido
+			if(checa_o == num){ //Caso todos os espaços estejam preenchidos
+				return 1; //vitoria
 			}
 		}
 		if(j != 0){ //i decresce para o ultimo indice do tabuleiro, depois apenas cresce.
@@ -217,15 +225,17 @@ int checa_vitoria_curva(char tab[][N], int num){
 	checa_x = 0; //Sempre zerando os checa, para não acumular as checagens.
 	checa_o = 0; //idem.
 	for(i = 0; i < num; i++){
-		if(tab[i][j] == 'X'){
-			checa_x++;    //Aumenta caso o espaço esteja preenchido.
-			if(checa_x == num){ //Caso todos os espaços estejam preenchidos.
-				return 1; //vitoria.
+		if(tab[i][j] == ' '){ //Caso tenha algum espaço em branco, logo não é possível vencer.
+			break; //Saindo desse caso de vitoria
+		} else if(tab[i][j] == 'X'){
+			checa_x++;    //Aumenta caso o espeço esteja preenchido
+			if(checa_x == num){ //Caso todos os espaços estejam preenchidos
+				return 1; //vitoria
 			}
 		} else if(tab[i][j] == 'O'){
-			checa_o++;    //Aumenta caso o espaço esteja preenchido.
-			if(checa_o == num){ //Caso todos os espaços estejam preenchidos.
-				return 1; //vitoria.
+			checa_o++;    //Aumenta caso o espeço esteja preenchido
+			if(checa_o == num){ //Caso todos os espaços estejam preenchidos
+				return 1; //vitoria
 			}
 		}
 		if(i == 0){ //j descresce apenas quando está na primeira linha, depois cresce até o final.
@@ -240,15 +250,17 @@ int checa_vitoria_curva(char tab[][N], int num){
 	checa_x = 0; //Sempre zerando os checa, para não acumular as checagens.
 	checa_o = 0; //idem.
 	for(j = 0; j < num; j++){
-		if(tab[i][j] == 'X'){
-			checa_x++;    //Aumenta caso o espaço esteja preenchido.
-			if(checa_x == num){ //Caso todos os espaços estejam preenchidos.
-				return 1; //vitoria.
+		if(tab[i][j] == ' '){ //Caso tenha algum espaço em branco, logo não é possível vencer.
+			break; //Saindo desse caso de vitoria
+		} else if(tab[i][j] == 'X'){
+			checa_x++;    //Aumenta caso o espeço esteja preenchido
+			if(checa_x == num){ //Caso todos os espaços estejam preenchidos
+				return 1; //vitoria
 			}
 		} else if(tab[i][j] == 'O'){
-			checa_o++;    //Aumenta caso o espaço esteja preenchido.
-			if(checa_o == num){ //Caso todos os espaços estejam preenchidos.
-				return 1; //vitoria.
+			checa_o++;    //Aumenta caso o espeço esteja preenchido
+			if(checa_o == num){ //Caso todos os espaços estejam preenchidos
+				return 1; //vitoria
 			}
 		}
 		if(i == 0){ //i descresce até a linha 0, depois cresce.
@@ -263,15 +275,17 @@ int checa_vitoria_curva(char tab[][N], int num){
 	checa_x = 0; //Sempre zerando os checa, para não acumular as checagens.
 	checa_o = 0; //idem.
 	for(i = 0; i < num; i++){
-		if(tab[i][j] == 'X'){
-			checa_x++;    //Aumenta caso o espaço esteja preenchido.
-			if(checa_x == num){ //Caso todos os espaços estejam preenchidos.
-				return 1; //vitoria.
+		if(tab[i][j] == ' '){ //Caso tenha algum espaço em branco, logo não é possível vencer.
+			break; //Saindo desse caso de vitoria
+		} else if(tab[i][j] == 'X'){
+			checa_x++;    //Aumenta caso o espeço esteja preenchido
+			if(checa_x == num){ //Caso todos os espaços estejam preenchidos
+				return 1; //vitoria
 			}
 		} else if(tab[i][j] == 'O'){
-			checa_o++;    //Aumenta caso o espaço esteja preenchido.
-			if(checa_o == num){ //Caso todos os espaços estejam preenchidos.
-				return 1; //vitoria.
+			checa_o++;    //Aumenta caso o espeço esteja preenchido
+			if(checa_o == num){ //Caso todos os espaços estejam preenchidos
+				return 1; //vitoria
 			}
 		}
 		if(i == 0){ //j decresce caso seja esteja na linha 0, depois cresce até o fim.
@@ -286,15 +300,17 @@ int checa_vitoria_curva(char tab[][N], int num){
 	checa_x = 0; //Sempre zerando os checa, para não acumular as checagens.
 	checa_o = 0; //idem.
 	for(j = 0; j < num; j++){
-		if(tab[i][j] == 'X'){
-			checa_x++;    //Aumenta caso o espaço esteja preenchido.
-			if(checa_x == num){ //Caso todos os espaços estejam preenchidos.
-				return 1; //vitoria.
+		if(tab[i][j] == ' '){ //Caso tenha algum espaço em branco, logo não é possível vencer.
+			break; //Saindo desse caso de vitoria
+		} else if(tab[i][j] == 'X'){
+			checa_x++;    //Aumenta caso o espeço esteja preenchido
+			if(checa_x == num){ //Caso todos os espaços estejam preenchidos
+				return 1; //vitoria
 			}
 		} else if(tab[i][j] == 'O'){
-			checa_o++;    //Aumenta caso o espaço esteja preenchido.
-			if(checa_o == num){ //Caso todos os espaços estejam preenchidos.
-				return 1; //vitoria.
+			checa_o++;    //Aumenta caso o espeço esteja preenchido
+			if(checa_o == num){ //Caso todos os espaços estejam preenchidos
+				return 1; //vitoria
 			}
 		}
 		if(j != 0){ //i decresce caso j esteja na coluna 0, depois cresce até o fim.
@@ -326,13 +342,15 @@ int checa_vitoria_meio(char tab[][N], int num){
 	checa_x = 0; //Sempre zerando os checa, para não acumular as checagens.
 	checa_o = 0; //idem
 	for(j = 0; j < num;  j++){
-		if(tab[i][j] == 'X'){
-			checa_x++;    //Aumenta caso o espaço esteja preenchido
+		if(tab[i][j] == ' '){ //Caso tenha algum espaço em branco, logo não é possível vencer.
+			break; //Saindo desse caso de vitoria
+		} else if(tab[i][j] == 'X'){
+			checa_x++;    //Aumenta caso o espeço esteja preenchido
 			if(checa_x == num){ //Caso todos os espaços estejam preenchidos
 				return 1; //vitoria
 			}
 		} else if(tab[i][j] == 'O'){
-			checa_o++;    //Aumenta caso o espaço esteja preenchido
+			checa_o++;    //Aumenta caso o espeço esteja preenchido
 			if(checa_o == num){ //Caso todos os espaços estejam preenchidos
 				return 1; //vitoria
 			}
@@ -349,13 +367,15 @@ int checa_vitoria_meio(char tab[][N], int num){
 	checa_x = 0;	 //Sempre zerando os checa, para não acumular as checagens.
 	checa_o = 0;	 //idem
 	for(j = 0; j < num;  j++){
-		if(tab[i][j] == 'X'){
-			checa_x++;    //Aumenta caso o espaço esteja preenchido
+		if(tab[i][j] == ' '){ //Caso tenha algum espaço em branco, logo não é possível vencer.
+			break; //Saindo desse caso de vitoria
+		} else if(tab[i][j] == 'X'){
+			checa_x++;    //Aumenta caso o espeço esteja preenchido
 			if(checa_x == num){ //Caso todos os espaços estejam preenchidos
 				return 1; //vitoria
 			}
 		} else if(tab[i][j] == 'O'){
-			checa_o++;    //Aumenta caso o espaço esteja preenchido
+			checa_o++;    //Aumenta caso o espeço esteja preenchido
 			if(checa_o == num){ //Caso todos os espaços estejam preenchidos
 				return 1; //vitoria
 			}
@@ -372,13 +392,15 @@ int checa_vitoria_meio(char tab[][N], int num){
 	checa_x = 0;	 //Sempre zerando os checa, para não acumular as checagens.
 	checa_o = 0;	 //idem
 	for(i = 0; i < num; i++){
-		if(tab[i][j] == 'X'){
-			checa_x++;    //Aumenta caso o espaço esteja preenchido
+		if(tab[i][j] == ' '){ //Caso tenha algum espaço em branco, logo não é possível vencer.
+			break; //Saindo desse caso de vitoria
+		} else if(tab[i][j] == 'X'){
+			checa_x++;    //Aumenta caso o espeço esteja preenchido
 			if(checa_x == num){ //Caso todos os espaços estejam preenchidos
 				return 1; //vitoria
 			}
 		} else if(tab[i][j] == 'O'){
-			checa_o++;    //Aumenta caso o espaço esteja preenchido
+			checa_o++;    //Aumenta caso o espeço esteja preenchido
 			if(checa_o == num){ //Caso todos os espaços estejam preenchidos
 				return 1; //vitoria
 			}
@@ -395,13 +417,15 @@ int checa_vitoria_meio(char tab[][N], int num){
 	checa_x = 0;	 //Sempre zerando os checa, para não acumular as checagens.
 	checa_o = 0;	 //idem
 	for(i = 0; i < num; i++){
-		if(tab[i][j] == 'X'){
-			checa_x++;    //Aumenta caso o espaço esteja preenchido
+		if(tab[i][j] == ' '){ //Caso tenha algum espaço em branco, logo não é possível vencer.
+			break; //Saindo desse caso de vitoria
+		} else if(tab[i][j] == 'X'){
+			checa_x++;    //Aumenta caso o espeço esteja preenchido
 			if(checa_x == num){ //Caso todos os espaços estejam preenchidos
 				return 1; //vitoria
 			}
 		} else if(tab[i][j] == 'O'){
-			checa_o++;    //Aumenta caso o espaço esteja preenchido
+			checa_o++;    //Aumenta caso o espeço esteja preenchido
 			if(checa_o == num){ //Caso todos os espaços estejam preenchidos
 				return 1; //vitoria
 			}
@@ -436,7 +460,9 @@ int checa_vitoria(char tab[][N], int num){
 		checa_x = 0; //Sempre zerando os checa, para não acumular as checagens.
 		checa_o = 0; //idem
 		for(j = 0; j < num; j++){
-			if(tab[i][j] == 'X'){
+			if(tab[i][j] == ' '){ //Caso haja algum espaço, logo não é possível ganhar nessa linha
+				break; //Saindo dessa linha
+			} else if(tab[i][j] == 'X'){
 				checa_x++;    //Aumenta caso o espaço esteja preenchido
 				if(checa_x == num){ //Caso todos os espaços estejam preenchidos
 					printf("Vitoria na Linha[%d]!\n", i);
@@ -457,7 +483,9 @@ int checa_vitoria(char tab[][N], int num){
 		checa_x = 0; //Sempre zerando os checa, para não acumular as checagens.
 		checa_o = 0; //idem
 		for(i = 0; i < num; i++){
-			if(tab[i][j] == 'X'){
+			if(tab[i][j] == ' '){ //Caso haja algum espaço, logo não é possível ganhar nessa Coluna
+				break; //Saindo dessa Coluna
+			} else if(tab[i][j] == 'X'){
 				checa_x++;    //Aumenta caso o espaço esteja preenchido
 				if(checa_x == num){ //Caso todos os espaços estejam preenchidos
 					printf("Vitoria na Coluna[%d]!\n", j);
@@ -476,7 +504,9 @@ int checa_vitoria(char tab[][N], int num){
 	checa_x = 0; //Sempre zerando os checa, para não acumular as checagens.
 	checa_o = 0; //idem
 	for(i = 0; i < num; i++){
-		if(tab[i][i] == 'X'){
+		if(tab[i][j] == ' '){ //Caso haja algum espaço, logo não é possível ganhar
+			break; //Saindo desse caso
+		} else if(tab[i][i] == 'X'){
 			checa_x++;    //Aumenta caso o espaço esteja preenchido
 			if(checa_x == num){ //Caso todos os espaços estejam preenchidos
 				puts("Vitoria na Diagonal!");
@@ -495,7 +525,9 @@ int checa_vitoria(char tab[][N], int num){
 	checa_x = 0; //Sempre zerando os checa, para não acumular as checagens.
 	checa_o = 0; //idem
 	for(i = 0; i < num; i++){
-		if(tab[i][j] == 'X'){
+		if(tab[i][j] == ' '){ //Caso haja algum espaço, logo não é possível ganhar
+			break; //Saindo desse caso
+		} else if(tab[i][j] == 'X'){
 			checa_x++;    //Aumenta caso o espeço esteja preenchido
 			if(checa_x == num){ //Caso todos os espaços estejam preenchidos
 				puts("Vitoria na Diagonal!");
@@ -557,7 +589,7 @@ Entrada:   recebe o tabuleiro.
 Saída:     retorna caso alguém vença.
 */
 
-int org_jogadas(char tab[][N], int num){
+void org_jogadas(char tab[][N], int num){
 	//dicionario de dados
 	int i,j; 		//Indices para percorrer a matriz e afins.
 	int checa;  	//Variavel apenas para checar a veracidade da jogada.
@@ -598,7 +630,7 @@ int org_jogadas(char tab[][N], int num){
 		if(jogadas >= (num*2) - 1){ //número minimo de jogadas para que alguém possa ganhar
 			if(checa_vitoria(tab,num) == 1){
 				puts("Jogador X Ganhou!");
-				return 0;
+				return;
 				}
 			}
 		if(jogadores == 2){
@@ -623,7 +655,7 @@ int org_jogadas(char tab[][N], int num){
 			if(jogadas >= (num*2) - 1){ //número minimo de jogadas para que alguém possa ganhar
 				if(checa_vitoria(tab,num) == 1){
 					puts("Jogador O Ganhou!");
-					return 0;
+					return;
 					}
 				}
 			} else { //jogada do Computador
@@ -645,7 +677,7 @@ int org_jogadas(char tab[][N], int num){
 				if(jogadas >= (num*2) - 1){ //número minimo de jogadas para que alguém possa ganhar
 					if(checa_vitoria(tab,num) == 1){
 						puts("Computador Ganhou!");
-						return 0;
+						return;
 					}
 				}
 			}
@@ -653,7 +685,7 @@ int org_jogadas(char tab[][N], int num){
 	
 	//Se passar pelo for, então ninguém ganhou.
 	puts("Deu Velha! Nenhum dos jogadores ganhou!");
-	return 0;
+	return;
 }
 
 //##################################################################################################
@@ -674,7 +706,7 @@ int main(void){
 	do{
 		//Recebendo o tamanho do tabuleiro.
 		do {
-			puts("Jogador, qual o Tamanho do Tabuleiro desejado?(Sendo 3 < n < 10)");
+			puts("Jogador, qual o Tamanho do Tabuleiro desejado?(minimo de 4x4 até maximo de 9x9)");
 			scanf("%d", &num);
 			if(num <= 3 || num >= 10)
 				puts("Tamanho do Tabuleiro inválido!");
@@ -685,7 +717,7 @@ int main(void){
 			for(j = 0; j < num; j++)
 				tab[i][j] = ' ';
 
-		//Chamando a função desencadeando o inicio do jogo.
+		//Chamando a função que organiza as jogads, desencadeando o inicio do jogo.
 		org_jogadas(tab,num);
 
 		//Verificando se o jogador que jogar novamente.
