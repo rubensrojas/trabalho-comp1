@@ -611,7 +611,7 @@ void org_jogadas(char tab[][N], int num){
 		//recebendo a jogada do jogador X
 		do{
 			checa = 0; 	//Começa como falso naturalmente.
-			printf("Jogador X, em que indice(X,Y) deseja jogar? ");
+			printf("Jogador X, em que indice(X Y) deseja jogar?(Ex: %d %d) ", gera_numero(num,3),gera_numero(num,4));
 			scanf("%d %d", &j, &i);
 			
 			//checando se a posição está disponivel.
@@ -637,7 +637,7 @@ void org_jogadas(char tab[][N], int num){
 			//recebendo a jogada do jogador O
 			do{
 				checa = 0; 	//Começa como falso naturalmente.
-				printf("Jogador O, em que indice(X,Y) deseja jogar? ");
+				printf("Jogador O, em que indice(X Y) deseja jogar?(Ex: %d %d) ", gera_numero(num,3),gera_numero(num,4));
 				scanf("%d %d", &j, &i);
 				//checando se a posição está disponivel.
 				if(checa_jogada(tab,num,i,j,1) == 1){
